@@ -1,0 +1,126 @@
+\newpage\section{METODOLOGIA}
+\p{Para o desenvolvimento do sistema de segurança, foi necessário estudar e visualizar um ambiente de aplicação real. Para isto é necessário entender o funcionamento de uma aeronave e como é a rotina de trabalho com o equipamento.}
+\p{Apos compreender o funcionamento de uma aeronave não tripulada, deve-se desenvolver a metodologia de segurança que será aplicado a aeronave, para que possamos ter uma logica de segurança, mitigando qualquer tipo de falha técnica.}
+
+\subsection{AERONAVE}
+\p{Cada aeronave é projetada de acordo com sua aplicação. A aeronave escolhida para o desenvolvimento deste trabalho foi um Vtol Mugin 4720 da empresa MuginUAV, equipado com um kit também oferecido pela mesma empresa, junto a o controlador de voo Pixhawk Cube Orange da Autopilot.}
+
+\insertimagesize{me}{diagrama_mugin}{Diagrama de peças do Mugin 4720}{400px}
+
+\newpage\subsubsection{Computadores}
+\p{Esta aeronave é equipada com diversos tipos de computadores, como:}
+\p{\textbf{Computador de Voo:} A Pixhawk é o cérebro principal da aeronave, ela é responsável por comandar e realizar as missões de voo de forma automatizada, sem a necessidade de um piloto controlando pelo radio controle. A controlado não oferece GPS, isto implica na necessidade de instalar um GPS externo na aeronave. }
+\p{\textbf{Computador com Sistema de Segurança:} A Raspberry será aonde ficara integrado o sistema de segurança, onde ira garantir a segurança do voo da aeronave mitigando possíveis falhas e acidentes.}
+\p{\textbf{Rastreador de Comandos:} O rastreador é uma placa controladora que realiza a leitura de todos os sinais presente na aeronave, tanto os sinais de bateria quanto os sinais enviados pela controladora de voo. Este micro computador é responsável por coletar informações extra da aeronave e enviar para o sistema de segurança.}
+\p{\textbf{Transmissor de Telemetria:} O transmissor é um equipamento de roteamento, que permite o operador se conectar a aeronave pelo equipamento de solo, para poder realizar manutenções e visualizar as informações da aeronave no planejador de voo. Convencionalmente é utilizado uma MikroTik Routerboard de 2.4ghz como transmissor em aeronaves como esta.}
+\subsubsection{Baterias}
+\p{Para alimentar os quatro motores elétricos e todo o sistema elétrico da aeronave, são necessário 2 baterias de 22000mAh/22V. E para conectar estas baterias aos \gls{ESC} dos motores e a os componentes elétricos é necessário um Modulo de Energia compatível, que ofereça saidas de energia para 5v e 7.5v.}
+\subsubsection{Tanque Combustível}
+\p{O tanque de combustível é o reservatório principal do motor a combustão, nele é colocado até 2 litros de Gasolina de Aviação (\gls{AVGAS}), que pode garantir até 1 hora de voo.}
+\subsubsection{Motor Combustão}
+\p{A aeronave utiliza de um Motor a Combustão como propulsor horizontal, onde o mesmo deve permanecer ligado a todo momento assim que a aeronave entra em modo \refcode{ARMADO}. Para que o Computador de Voo consiga ter o controle de velocidade do motor, deve-se instalar um servo motor em seu mecanismo de aceleração.}
+\newpage\subsubsection{Motores Elétricos}
+\p{Esta aeronave utiliza de Motores Elétricos como propulsores verticais, onde serão usados somente para Decolar e Pousar a aeronave. Para cada motor elétrico deve haver um Controlador Eletrônico de Velocidade (ESC), para que o controlador de voo consiga controlar a rotação individualmente de cada motor.}
+\subsubsection{Servo Motores}
+\p{Na aeronave são instalados 7 servos motores, sendo 5 deles responsáveis por controlar o voo da aeronave, e os outros 2 responsável pela aceleração do motor a combustão e direção da roda dianteira da aeronave.}
+
+\subsection{ROTINA DE TRABALHO}
+\p{Para operar uma aeronave não tripulada autônoma, o operador deve criar uma Missão de Voo no planejador de voo. Apos criar a missão de voo o operador irá conectar a aeronave no planejador de voo para realizar o upload da Missão nela, assim deixando a aeronave pronta para iniciar a missão.}
+\p{No campo o operador irá montar a aeronave caso ela seja desmontável e abastece-la, para depois ligar o Notebook/Tablet com o Planejador de voo junta a antena de Radio Transmissão.}
+\insertimagesize{me}{fluxograma_software}{Fluxograma de Equipamentos}{300px}
+\p{Depois que estiver com tudo já montado e iniciado, o operador irá conectar a aeronave no planejador de Voo e a posicionar para o ponto de partida, que foi definido na missão de voo.}
+\p{Para iniciar a missão, operador deve pressionar no planejador de voo, no botão Iniciar Missão para a aeronave iniciar seu trabalho no campo.}
+\p{Por se tratar de uma aeronave autônoma o operado não precisa pilotar a aeronave, ele precisa somente acompanhar o processo de voo da missão pelo o planejador de voo. E por fim ao concluir a missão de voo o operado deve desmontar e guardar todo o equipamento.}
+
+\subsection{MODOS DE VOO DA AERONAVE}
+{
+	\p{Para desenvolver os casos de mitigação é necessario compreender o funcionamento de uma Missão de Voo. Toda Missão de Voo realizada por uma aeronave autônoma é dividido em quatro estágios.}
+	
+	\insertimagesize{me}{Fases_Voo}{Ilustração dos Modos de Voo}{470px}
+	
+	\newpage\subsubsection{Parado}
+	\p{Apos o operador montar a aeronave e conectar a bateria, a Pixhawk irá se iniciar automaticamente o sistema em modo desarmado. O modo desarmado é o modo onde a aeronave ficara pousada aguarda o operador iniciar a missão. Neste estágio todos os motores de propulsão ficaram desenergizados, exceto nos casos de motores a combustão com partida manual. Já o restante dos componente como GPS, sensores e servos motores ficaram todos em funcionamento.}
+	\p{Para a aeronave sair do estágio de parado e mudar para decolagem, o operador deve iniciar a missão de voo na aeronave. A Missão pode ser iniciada por um radio controle ou pelo planejador de voo.}
+	\subsubsection{Pouso/Decolagem}
+	\p{Ao mudar para o modo armado a aeronave ira ligar imediatamente todos os motores de propulsão, tanto os horizontais quanto os verticais. Alguns propulsores verticais, como motores a combustão de partida manual, devem ser ligados manualmente pelo operador antes de ser armado. Para ligar um motor de partida manual o operador deve, girar a hélice até que o motor comece a funcionar, em motores mais modernos com partida automática não precisão ser ligados antes de armar a aeronave. Apos a aeronave estiver com os motores em funcionamento, ela irá começar a subir até a altura de segurança.}
+	\p{A altura de segurança é definida quando é criado a Missão de Voo no planejador de voo. Esta altura deve ter no minimo a altura minima de Efetividade do Paraquedas.}
+	\subsubsection{Transição}
+	\p{Apos a aeronave atingir a Altura de Segurança, ela estrara no Modo de Transição, onde irá continuar subindo até a altura de Cruzeiro/Trabalho. A altura de Cruzeiro/Trabalho também é definida no planejador de voo durante a criação da Missão de Voo, a altura de Cruzeiro/Trabalho deve ser acima da Altura de Segurança mais a altura do Maior Ponto de Elevação presente na área de Voo.}
+	\p{Ao entrar em modo de Transição, a aeronave irá desligar os Propulsores Verticais e subir em parafuso até a Altura de Cruzeiro. Em aeronaves que não possuem Propulsores Horizontais, a aeronave irá continuar subindo verticalmente até a Altura de Cruzeiro/Trabalho.}
+	\subsubsection{Cruzeiro/Trabalho}
+	\p{Apos a aeronave atingir a Altura de Cruzeiro/Trabalho, ela irá iniciar a Missão de Voo. Apos concluir a Missão de Voo a aeronave irá voltar até a Área de Segurança e mudara para o Modo de Transição.}
+	
+	
+	\newpage\subsection{MITIGAÇÕES E LÓGICA DE SEGURANÇA}
+	\p{Para garantir a segurança da aeronave, foi desenvolvido um protocolo de mitigação, visando detectar possíveis falhas ou acidentes que possa ocorrer com a aeronave durante seu voo. Portanto foi necessário integrar uma RaspBerry na aeronave, com o objetivo de analisar todos os componentes e seguir todas as condições presente nos casos de mitigação, assim garantindo a segurança do voo da aeronave.}
+	
+	\insertimagesize{me}{Modos_Voo}{Esquemático de Casos de Mitigação}{400px}
+}
+
+\p{Vale ressaltar que a aeronave deve estar preparada para a integração do Computador de Segurança, e que todos seus componentes tenha redundância em suas conexões, de tal forma onde se caso aconteça alguma falha elétrica ou mecânica, a aeronave ainda possa retornar em segurança para a Área de Segurança sem a acionar o paraquedas.}
+\p{No protocolo de mitigação foi estabelecido três bandeiras de sinalização para a aeronave, que indica como a aeronave esta em relação a os aletas do protocolo de mitigação.}
+\p{A primeira brandeira é a Branca, ela sinaliza que a aeronave esta segura para voo.}
+\p{A segunda bandeira é a Amarela, que indica que foi detectado uma falha não grave no funcionamento da aeronave, ao ativar esta bandeira a aeronave irá imediatamente voltar para a área de segurança e pousar para manutenção.}
+\newpage\p{A terceira bandeira é a Vermelha, que indica que foi detectado uma falha grave na aeronave, que pode causar um possivel acidente, ao ativar esta bandeira o sistema de segurança irá emitir um sinal de energia que pode ser ligado a um dispositivo de segurança, como por exemplo a tampa de um paraquedas.}
+
+\subsubsection{Servo Motores}
+{
+	\p{A mitigação dos Servos Motores são responsável por verificar se todos os servos motores estão em funcionamento e em caso de falha, analisar qual é o grau de risco apresentado pela falha detectada. }
+	\insertimagesize{me}{mitigacao_servo_motores}{Diagrama de Mitigação dos Servo Motores}{400px}
+}
+\p{Todas as partes responsável pela dirigibilidade aérea da aeronave como: lemes e ailerões, precisa ter pelo menos uma redundância nos servos motores de cada parte. A redundância existe, quando ah presente mais de um servo motor na mesma peça fazendo as mesmas funções. Pois em caso de falha em um servo motor, a aeronave ainda irá conseguir voar normalmente. Assim podendo voltar para a Areá de Segurança sem a necessidade de acionar o paraquedas.}
+
+\newpage\subsubsection{Motor a Combustão}
+{
+	\p{A mitigação dos Motores Elétricos são baseados em sua rotação. Visando detectar problemas no funcionamento dos motores, como: Motor Travado e Perca de Hélice por má fixação.}
+	\insertimagesize{me}{mitigacao_motor_combustao_rotacao}{Diagrama de Mitigação dos Motores a Combustão}{400px}
+	\p{Os motores a combustão só dever começar a rotacionar quando a aeronave é Armada. Esta condição não é valida para motores a combustão que tem partida manual, o operador deve garantir que estes motores esteja funcionando quando a aeronave for Armada.}
+\subsubsection{Motores Elétricos}
+	\p{A mitigação dos Motores Elétricos visa detectar possíveis falhas na rotação dos motores, como rotação excessiva que pode levar à quebra da hélice por força centrífuga ou baixa rotação que pode resultar em queda da aeronave. A rotação do motor pode ser medida através de um sensor de rotação a laser ou através do ESC dos motores.}
+	\newpage\insertimagesize{me}{mitigacao_motor_eletrico_rotacao}{Diagrama de Mitigação dos Motores Elétricos}{400px}
+}
+\p{Se a rotação do motor estiver abaixo de mil \gls{RPM}, pode indicar um mau funcionamento, como travamento da hélice.}
+\p{Se a rotação do motor estiver acima de dez mil RPM, pode gerar uma força centrifuga na hélice que pode causar danos e até mesmo partir ao meio a hélice.}
+
+\subsubsection{Conexão com Sistema de Navegação}
+{
+	\p{A mitigação do Sistema de Navegação, é responsavel por assegurar uma comunicação na RaspBerry com a Pixhawk. O HeartBeat é entendido pelo sistema de segurança, quando o Sistema de Navegação envia a ele uma nova localização do \gls{GPS}. Por padrão o sistema de segurança envia a posição do GPS para suas conexões a cada um segundo, mesmo quando a aeronave esta Desarmada.}
+	\newpage\insertimagesize{me}{mitigacao_conexao_sistema_navegacao}{Diagrama de Mitigação da Comunicação com o Sistema de Navegação}{400px}
+}
+
+\subsubsection{Conexão com Sistema de Segurança}
+{
+	\p{Na placa do sistema de navegação, será implantado um Script. Onde ficará responsável por manter uma comunicação simples entre o sistema de navegação e sistema de segurança.}
+	\p{Esta comunicação será feita pela porta Telem1 da Pixhawk com uma porta USB da Raspberry. Esta comunicação utiliza um Script Lua, para criar um sinal de HeartBeat com a RaspBerry por meio de uma comunicação Serial. De acordo com a fabricante, para se usar comunicação serial no Script Lua é necessário ter uma placa com cache de 2mb de memoria flash e 70kb de armazenamento \cite{pixhawk-script-lua}.}
+	\insertimagesize{me}{mitigacao_sistema_seguranca}{Diagrama de Mitigação da Comunicação com o Sistema de Segurança}{400px}
+	\newpage\p{O HeartBeat é um sinal vazio lançado pela Raspberry para a Pixhawk, para sinalizar que o sistema de segurança esta conectado e funcionando.}
+}
+
+\subsubsection{Conexão com Rastreador de Comando}
+{
+\p{Muitos dos componentes elétricos não são medidos pela Pixhawk. Como rotação de motor, nível de combustível e componentes extras presente na aeronave. Para solucionar este problema a aeronave deve ser equipada com uma placa que seja capaz de ler todos os dados de todos os componentes presente na aeronave.}
+\insertimagesize{me}{mitigacao_rastreador_comando}{Diagrama de Mitigação da Comunicação do Rastreador de Comando}{400px}
+\p{Esta placa deve ser capaz de criar um relatório em tempo real da situação de todas as conexões presente na aeronave.}
+\p{Este relatório deve ser enviado para o sistema de segurança uma vez por segundo, para que o sistema inserir estes dados no log de voo e para avaliar a situação completa da aeronave.}
+}
+
+\newpage\subsubsection{Fonte de Energia}
+{
+	\p{Visando uma possível queda da aeronave por falta de energia em suas baterias. Esta mitigação ficara observando o nível da bateria, caso seja detectado um nível baixo de energia, a aeronave devera voltar para o ponto de partida ou acionar o sistema de segurança da aeronave. }
+	\insertimagesize{me}{mitigacao_nivel_bateria}{Diagrama de Mitigação do nível de bateria}{400px}
+}
+\p{O nível de bateria pode ser medido através do Modulo de Energia ou por um Voltímetro conectado as baterias.}
+
+\newpage\subsubsection{IMU Sistema de Navegação}
+{
+	\p{A mitigação da \gls{IMU} do Sistema de Navegação, é responsável por verificar, se a aeronave esta com uma inclinação muito alta e se confiabilidade do GPS esta segura.}
+	\insertimagesize{me}{mitigacao_imu_sistema_navegacao}{Diagrama de Mitigação da IMU do Sistema de Navegação}{400px}
+	\p{O \gls{EKF} Failsafe é alerta emitido pelo Sistema de navegação. Ele é ativado quando duas ou mais parâmetros de confiança de precisão do GPS forem menores que 20\% por  mais de um segundo. De acordo com o manual online da Audupilot, os parâmetros de confiabilidade são: Velocidade de Deslocamento, Posição Horizontal, Posição Vertical, Compasso e Terreno.}
+}
+
+\newpage\subsubsection{Ignição de Motores}
+{
+	\p{Esta mitigação é responsável por garantir a segurança durante a manipulação da aeronave e garantir o funcionamento da mesma. Pois é necessário que o motor esteja energizado para funcionar o servo motor de aceleração.}
+	\insertimagesize{me}{mitigacao_motor_combustao_thotter}{Diagrama de Mitigação da Ignição dos Motores}{400px}
+}
+\p{Nesta etapa o sistema garanti que o motor esteja acionado somente se a aeronave estiver Armada. Esta mitigação é desativada em aeronaves que não tenha motores a combustão.}

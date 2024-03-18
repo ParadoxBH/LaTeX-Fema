@@ -1,0 +1,35 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+%inclusão do arquivo de formatação e funções
+\input{formatting}
+
+\orientando{Inserir nome do Aluno}
+\orientador{Inserir nome do Orientador}
+\titulo{Inserir titulo do TCC}
+\examinador{Inserir nome do Examinador}
+
+\begin{document}
+
+\showcapa
+\showresumo{Inserir Descrição em portugues}{tag1, tag2, tag3}
+\showabstract{Inserir Descrição em ingles}{tag1, tag2, tag3}
+
+%Sumario
+\newpage\tableofcontents
+
+%Sumario de Imagens
+\newpage\listoffigures
+
+%Sumario de Siglas
+\printpageglossary
+
+%Inserir capitulos abaixo
+\input{introducao}
+\input{revisao}
+\input{proposta}
+\input{metodologia}
+\input{conclusao}
+\printreferences
+\end{document}

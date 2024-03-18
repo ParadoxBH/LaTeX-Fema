@@ -1,0 +1,39 @@
+\newpage\subsection{PIXHAWK SCRIPT}
+\p{O script Lua na Pixhawk tem como função, realizar o caso de mitigação de comunicação com o sistema de segurança, ou seja ele irá garantir o heart beat entre os computadores.}
+\p{A logica do algoritmo implica em, ficar lendo constantemente a porta serial \refcode{telem1} da Pixhawk e ficar enviando para a Raspberry um sinal vazio, e no caso de perca de comunicação com o sistema de segurança, ele irá fazer a aeronave retornar para o ponto de partida.}
+
+\subsubsection{Habilitando comunicação serial}
+\p{Para habilitar a comunicação serial na Pixhawk deve-se alterar alguns parâmetros de configuração da placa, para isto é necessario conectar a Pixhawk no planejador de voo e alterar os seguintes parâmetros no painel de parâmetros:}
+
+\par{Habilitar scripts lua:}
+\p{SCR\_ENABLE = 1}
+
+\par{Definir 4mb de limite de memoria para rodar o script lua:}
+\p{SCR\_HEAP\_SIZE = 45000}
+
+\par{Define a porta \refcode{telem1} exclusiva para comunicação serial em script lua:}
+\p{SERIAL1\_PROTOCOL = 28}
+
+\par{Definir o baud de comunicação da porta \refcode{telem1} para 9600}
+\p{SERIAL1\_BAUD = 9}
+
+\p{Apos alterar os parâmetros, deve-se reiniciar a Pixhawk para confirmar as alterações feiras. Para executar um script lua na Pixhawk, deve-se copiar o .lua dentro da pasta APM/scripts do cartão de memoria, pode acontecer da pasta não existir e ser necessario cria-la.}
+
+\newpage\subsubsection{Script Lua}
+
+\p{O Script Lua começa declarando as variáveis referente a logica do heart beat.}
+\p{Na linha 10 é aberto a comunicação serial na porta \refcode{telem1}.}
+\p{Da linha 15 até a linha 56 é feita toda a logica de heart beat e mitigação da Pixhawk.}
+\p{E por fim na linha 59 é iniciado a função \refcode{update}.}
+
+\insertimagesize{me}{luaScript/header}{ScriptLua Corpo}{480px}
+
+\p{No inicio da função \refcode{update} é realizado o Heat Beat com o sistema de segurança, aqui é feito a contagem de quanto tempo esta sem receber o sinal do sistema de segurança.}
+
+\newpage\insertimagesize{me}{luaScript/heartbeat}{ScriptLua Heart Beat}{480px}
+
+\p{Apos realizado o Heat Beat com o sistema de segurança na função \refcode{update}, o algoritmo irá fazer a mitigação de conexão com o sistema de segurança, verificando se perdeu a comunicação com a Pixhawk.}
+\p{Caso ele detecte que foi perdido a comunicação com o sistema de segurança, a aeronave irá retornar para o ponto de partida da missão.}
+\insertimagesize{me}{luaScript/mitigacao}{ScriptLua Mitigação}{480px}
+
+

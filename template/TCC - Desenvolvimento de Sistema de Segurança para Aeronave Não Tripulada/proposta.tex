@@ -1,0 +1,70 @@
+\newpage\section{PROPOSTA DO TRABALHO}
+\p{A proposta deste trabalho consiste em realizar um levantamento de requisitos de segurança exigidos pelos órgãos reguladores Brasileiros, visando o desenvolvimento de um software embarcado capaz de identificar e mitigar possíveis falhas durante o voo dos drones. O objetivo principal é assegurar que o voo seja seguro, evitando possíveis acidentes e contribuindo com a segurança da aeronave.}
+
+\iffalse
+\subsection{ARQUITETURA DA SOLUÇÃO PROPOSTA}
+\subsection{BUSINESS PROCESS MODELING NOTATION (BPMN)}
+\subsubsection{FUNDAMENTOS}
+\subsubsection{DIAGRAMA BPMN}
+\fi
+
+\iffalse
+\subsection{BUSINESS MODEL CANVAS (BMC)}
+\subsubsection{FUNDAMENTOS}
+\subsubsection{DIAGRAMA BMC}
+\insertimagesize{me}{canvas}{Diagrama BMC}{17cm}
+\fi
+\subsection{TECNOLOGIAS E FERRAMENTAS}
+\p{Para o desenvolvimento de projeto, é crucial selecionar o computador de voo e um software de planejamento de voo apropriado.}
+\p{Atualmente, existem diversas opções de controladores disponíveis no mercado, e entre os mais populares estão:}
+
+
+\begin{itemize}
+	\showItem{Pixhawk}{O Cube Orange é o controlador automático mais potente do ecossistema Cubepilot. Como um dos modelos mais completos do grupo, ele foi projetado para fornecer a máxima capacidade de recursos computacionais necessários durante o voo \cite{pixhawk}. }
+	\insertimagesize{pixhawk}{placa_pixhawk}{Controlador de Voo: Pixhawk Cube Orange e With ADSB-In}{8cm}
+	
+	
+	
+	\newpage\showItem{DJI Naza-M V2}{A placa controladora Naza-M V2 é um produto proprietário da DJI, com código fechado, que foi desenvolvida especificamente para ser utilizada com produtos da empresa. Ela oferece compatibilidade e facilidade de instalação com os periféricos da DJI, além de ser de fácil configuração  \cite{naza-m-v2}. No entanto, é importante ressaltar que, por se tratar de um produto proprietário, ele pode apresentar limitações em termos de personalização e flexibilidade em comparação a outras opções disponíveis no mercado.}
+	\insertimagesize{naza-m-v2}{placa_nazaMv2}{Controlador de Voo: Kit Naza-M V2}{8cm}
+	
+	
+	
+	\showItem{ArduPilot Mega (APM)}{O APM é uma placa de controle de voo de código aberto que não requer montagem. Ele é amplamente utilizado em drones de hobby e também é popular em projetos de pesquisa \cite{apm}.}
+	\insertimagesize{apm}{placa_apm}{Controlador de Voo: APM 2.5/2.6}{8cm}
+	
+	
+	\newpage\showItem{Holybro Kakute F7}{O Kakute F7 da Holybro é um controlador de voo especialmente desenvolvido para aeromodelos de corrida. Uma das suas principais vantagens é ser um sistema de código aberto, oferecendo uma ampla variedade de protocolos de conexão. O layout do controlador facilita a conexão com outros componentes, permitindo que a construção do drone fique organizada e limpa \cite{kakute}. Embora não seja capaz de realizar voos autônomos, ele pode ser conectado a um computador de voo para realizar voos autônomo, como o Betaflight e o ArduPilot.}
+	\insertimagesize{kakute}{placa_kakute}{Controlador de Voo: Kakute F7 V1.5}{7cm}
+	
+	
+	
+	\showItem{Matek F405-WING}{A placa de controle de voo F405-WING é uma placa desenvolvida exclusivamente para drones de asas fixa. Esta placa foi projetada com recursos e funções avançadas para oferecer pilotagem precisa e controlada, garantindo maior estabilidade e segurança aos voos \cite{matek}}
+	\insertimagesize{matek}{placa_matek}{Controlador de Voo: FLIGHT CONTROLLER F405-WING}{7cm}
+\end{itemize}
+
+\newpage\p{Além de escolher o controlador de voo adequado, é essencial utilizar um software de planejamento de voo para criar voos autônomos e também para configurar as aeronaves. Atualmente, há diversos softwares disponíveis, alguns dos quais incluem:}
+
+\begin{itemize}
+	\showItem{Mission Planner}{O Mission Planner é um software completo de planejamento de voo de código aberto que permite criar missões de voo e realizar testes em aeronaves. Esta ferramenta permite configurar e ajustar os parâmetros de voo em drones de diversos tipos e modelos \cite{ardupilot}}
+	\insertimagesize{ardupilot}{software_mission_planner}{Planejador de voo: Mission Planner}{12cm}
+	
+	\newpage\showItem{QGroundControl}{O QGroundControl é uma ferramenta de código aberto que oferece um conjunto completo de recursos para controle de voo e planejamento de missão para drones com protocolo MAVLink. Essa ferramenta foi desenvolvida para proporcionar facilidade de uso tanto para usuários comuns quanto para desenvolvedores profissionais \cite{qground}.}
+	\insertimagesize{qground}{software_qground}{Planejador de voo: QgroundControl}{12cm}
+	
+	
+	\showItem{DJI Assistant 2}{O Assistant 2 é um software desenvolvido pela DJI. Esta ferramenta projetado para auxiliar na configuração, calibração e atualização de firmware de drones DJI e outros equipamentos da marca \cite{dji_assistant}.}
+	\insertimagesize{dji_assistant}{software_dji}{Planejador de voo: DJI Assistant 2}{12cm}
+	
+	\newpage\showItem{Betaflight Configurator}{
+		O Betaflight é um software de controlador de voo utilizado em drones para proporcionar um desempenho de voo superior, com adição de recursos avançados e suporte a uma ampla variedade de dispositivos \cite{betaflight}.}
+	\insertimagesize{betaflight}{software_betaflight}{Planejador de voo: BetaFlight Configurator}{10cm}
+	
+	\showItem{Cleanflight Configurator}{O Cleanflight é um software de controle de voo de código aberto que pode ser usado em uma ampla variedade de aeronaves, não se limitando somente a drones rotativos. Com sua arquitetura de 32 bits, o software é uma versão aprimorada do código MultiWii \cite{cleanflight}.}
+	\insertimagesize{cleanflight}{software_cleanflight}{Planejador de voo: CleanFlight Configurator}{10cm}
+\end{itemize}
+
+\newpage\p{É importante ressaltar que a escolha tanto do computador de voo quanto do software de planejamento de voo é de extrema importância para o sucesso de um voo autônomo.}
+\p{Tanto o controlador de voo quanto o software de planejamento de voo têm características únicas e é crucial escolher os que atendam às necessidades específicas da aeronave e da missão em questão. Por isso, é importante avaliar cuidadosamente as opções disponíveis antes de selecionar tanto o hardware quanto o software para o projeto que será implantado na aeronave.}
+\p{Dada a disponibilidade e familiaridade com as ferramentas, foi escolhido o controlador de voo Pixhawk em conjunto com o planejador de voo Mission Planner junto a Raspberry para serem utilizados no projeto em questão. A decisão foi tomada com base no conhecimento prévio e acesso às ferramentas mencionadas, tornando-as uma escolha prática e viável para o desenvolvimento do projeto.
+}

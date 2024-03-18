@@ -1,0 +1,123 @@
+\newpage\section{REVISÃO DA LITERATURA}
+\p{Há alguns anos, a utilização de drones em território brasileiro era pouco discutida, mas essa realidade tem mudado recentemente. Muitas empresas passaram a reconhecer a importância dessas aeronaves para automatizar tarefas complexas e reduzir custos. Atualmente, o agronegócio é responsável por 40\% do uso de drones no país, sendo o principal setor a adotar essa tecnologia \cite{drones-logistica}.}
+
+\insertimage{quantidade-cadastros}{cadastrosDrones}{Quantidade de Cadastros - Drones}
+
+\p{Atualmente, os Órgãos Reguladores da aviação e espaço aéreo brasileiro possuem total autonomia para fiscalizar o desenvolver e a operação de drones no país. Eles estabelecem diversas regras e normas que devem ser seguidas para reduzir os riscos durante as atividades aéreas realizadas por drones \cite{regulamentacao-impactos}.}
+\p{Para regulamentar as operações civis com drones, a ANAC estabeleceu regras e normas. O Regulamento Brasileiro de Aviação Civil Especial nº 94/2017 (RBAC-E nº 94/2017) da ANAC é complementar às normas de operação de drones estabelecidas pelo Departamento de Controle do Espaço Aéreo (DECEA) e pela Agência Nacional de Telecomunicações (ANATEL). Para operar drones no território brasileiro, é necessário seguir as normas da ANAC \cite{anac-res-n419-2017}. }
+
+
+\newpage\subsection{FUNDAMENTOS AEROMODELO E RPA}
+Os VANTs são sistemas complexos que envolvem várias áreas de conhecimento. Alguns dos fundamentos essenciais para o funcionamento desses equipamentos são:
+\begin{itemize}
+	\showItem{Aerodinâmica}{o conhecimento da dinâmica do ar é fundamental para projetar VANTs que possam voar com estabilidade e eficiência. Os conceitos de sustentação, arrasto e estabilidade são essenciais para garantir a operação segura e controlada desses equipamentos.}
+	\showItem{Eletrônica}{VANTs são equipados com diversos sistemas eletrônicos, como sensores, processadores, atuadores e sistemas de comunicação. É importante ter conhecimentos em eletrônica para projetar, construir e programar esses sistemas.}
+	\showItem{Controle e navegação}{para controlar o voo dos VANTs, é necessário ter um sistemas de navegação e controle de atitude. Esses equipamentos podem ser controlados remotamente ou de forma autônoma, com base em sistemas de \gls{GPS}, sensores inerciais e sistemas de visão.}
+	\showItem{Motores e Energia}{Os VANTs são aeronaves que podem ser equipadas com diferentes tipos de motores, como motores elétricos ou motores a combustão, que convertem energia elétrica ou energia térmica em energia mecânica para possibilitar o voo da aeronave. O motor é um componente crítico para o funcionamento da aeronave, e a escolha do tipo de motor depende das necessidades e características específicas de sua aplicação.}
+	\showItem{Segurança e regulamentação}{os VANTs devem operar com segurança e respeitar as normas e regulamentações locais. É importante ter conhecimentos em segurança de voo, gerenciamento de riscos e regulamentação para operar esses equipamentos de forma legal e responsável.}
+\end{itemize}
+\newpage\subsection{TIPOS E CARACTERÍSTICAS}
+Os VANTs podem ser classificados de diversas maneiras, dependendo do critério utilizado. De acordo com o \gls{IBAPE}\cite{IBAPE/MG}, existem atualmente dois tipos principais de VANTs populares no mercado: aqueles com asa fixa e os multirotores. Além desses, existem outros tipos comuns, tais como:
+\begin{itemize}
+	\showItem{Asa fixa}{são VANTs que possuem uma estrutura com asas fixas, semelhantes a um avião convencional. Esses equipamentos são capazes de voar a grandes altitudes e distâncias, com maior eficiência e estabilidade em condições de vento.}
+	\insertimagesize{mugin}{asa-fixa-muginuav}{Asa fixa: Mugin-3 UAV V-Tail}{8cm}
+	
+	\showItem{Monorrotor}{são VANTs que possuem um único rotor responsavel por realizar a sustentação da aeronave, assim como em um helicóptero. Eles apresentam uma boa capacidade de voar em espaços mais limitados, embora sejam mais desafiadores de controlar em comparação a outras aeronaves.}
+	\insertimagesize{DRONE}{Mono-Motor-PRODRONE}{Mono Rotor: ProDrone PDH-GS120}{8cm}
+	
+	\newpage\showItem{Multirrotores}{são VANTs que possuem múltiplos rotores, geralmente quatro, seis ou oito. Esses equipamentos são capazes de voar em baixa altitude e manobrar com grande precisão, sendo muito utilizados para fotografia aérea, mapeamento e inspeções em áreas urbanas.}
+	\insertimagesize{ALTI}{mult-rotor-ALTI-Flari}{Multi Rotor: ALTI Flari}{10cm}
+	
+	\showItem{Híbridos}{são VANTs que combinam características de asa fixa e multirrotores, sendo capazes de decolar e pousar verticalmente e voar horizontalmente (\glspl{VTOLs}) com alta velocidade e altitude. Esses equipamentos são utilizados em missões que requerem grande autonomia e velocidade, como a vigilância de fronteiras e a busca e resgate}
+	\insertimagesize{ALTI}{vtol-ALTI-Transition}{Hibrido: ALTI Transition}{10cm}
+	
+	\newpage\showItem{Aerostatos}{são VANTs que usam gás mais leve que o ar, como hélio ou hidrogênio, para se manterem no ar. Geralmente estas aeronaves são utilizadas para realizar monitoramento e vigilância de longa duração em áreas específicas, como fronteiras ou áreas naturais de difícil acesso.}
+	\insertimagesize{Aero-Drum}{aerostato-uniblimp}{Aerostato: UNIBLIMP}{10cm}
+	
+\end{itemize}
+Além disso, os VANTs podem ser caracterizados por outras características, como:
+\begin{itemize}
+	\showItem{Autonomia}{a autonomia do drone se refere à capacidade de voar por um determinado período de tempo sem a necessidade de recarga ou troca de bateria. Essa característica varia de acordo com o tipo de equipamento e a sua finalidade.}
+	\showItem{Versatilidade}{a versatilidade de um drone pode se referir à facilidade de controlar a aeronave em diferentes situações e ambientes. Isso inclui a habilidade de realizar manobras precisas, responder rapidamente aos comandos do operador, ser capaz de operar em condições climáticas adversas e outras condições desafiadoras.}
+	\showItem{Carga útil}{a carga útil se refere ao peso máximo que o VANT é capaz de transportar, que pode variar de alguns gramas a várias dezenas de quilos. Essa característica é importante para determinar a capacidade do equipamento em realizar missões específicas, como transporte de equipamentos, coleta de dados ou entrega de cargas.}
+	\showItem{Altitude máxima}{a altitude máxima que o VANT é capaz de atingir varia de acordo com o tipo de equipamento e o seu sistema de propulsão. Essa característica é importante para determinar a capacidade do equipamento em realizar missões em áreas de difícil acesso ou em condições extremas.}
+	\newpage\showItem{Sistema de controle}{o sistema de controle se refere aos equipamentos utilizados para controlar o VANT, que podem ser de controle remoto ou autônomo. Os sistemas de controle remoto permitem que o equipamento seja controlado por um operador externo, enquanto os sistemas autônomos permitem que o VANT execute missões de forma independente, utilizando sistemas de inteligência artificial e sensores.}
+\end{itemize}
+\subsection{REGULAMENTAÇÕES}
+\p{No Brasil, a operação de VANTs (Veículos Aéreos Não Tripulados) é regulamentada pela Agência Nacional de Aviação Civil (ANAC), que é responsável por garantir a segurança e regularidade do transporte aéreo no país \cite{seguranca-drones}.}
+\p{As regulamentações para operação de VANTs no Brasil estão estabelecidas na Resolução ANAC nº 419/2017, que define os requisitos e procedimentos para operação de VANTs em espaço aéreo brasileiro \cite{anac-res-n419-2017}.}
+\p{De acordo com a resolução, os operadores de VANTs devem registrar seus equipamentos junto à ANAC e obter autorização para operar em espaço aéreo público. Além disso, os operadores devem cumprir uma série de requisitos de segurança de voo, como manter uma distância mínima de outras aeronaves e operar em condições meteorológicas favoráveis.}
+\p{A resolução também estabelece limites de altura e distância para operação de VANTs, que variam de acordo com o tipo de equipamento e a finalidade da missão. Em áreas urbanas, por exemplo, os VANTs devem operar a uma altura máxima de 120 metros e em áreas rurais, a uma altura máxima de 400 metros.}
+\p{Além da \gls{ANAC}, a operação de VANTs no Brasil também está sujeita à regulamentação de outros órgãos, como o Departamento de Controle do Espaço Aéreo (\gls{DECEA}), responsável pela gestão do espaço aéreo brasileiro, e a Agência Nacional de Telecomunicações (ANATEL), que regula o uso de frequências de rádio utilizadas por equipamentos de telecomunicações, incluindo VANTs \cite{decea}.}
+\p{Em resumo, a operação de VANTs no Brasil está sujeita a uma série de regulamentações estabelecidas pela ANAC e outros órgãos, com o objetivo de garantir a segurança e regularidade do transporte aéreo no país. É importante que os operadores de \glspl{VANTs} conheçam e cumpram essas regulamentações para evitar multas e outras penalidades.}
+\newpage\subsubsection{Drones Recreativos}
+\p{De acordo com a regulamentação da ANAC, os drones recreativos, são aqueles utilizados para fins de lazer ou entretenimento (aeromodelismo), sem finalidade comercial. Estes drones são nomeados como aeromodelo. Estas aeronaves são regulamentados pela \citeauthor{anac-res-n419-2017} por meio da Resolução nº 419/2017, que estabelece os requisitos e procedimentos para operação de drones em espaço aéreo brasileiro.}
+
+\p{Para operar um drone recreativo no Brasil, o operador deve seguir algumas regras básicas, tais como:}
+\begin{itemize}
+	\showItem{Peso máximo}{O peso máximo permitido para drones recreativos é de 25 quilogramas.}
+	\showItem{Altitude máxima}{A altitude máxima permitida para voos de drones recreativos é de 120 metros (400 pés) acima do nível do solo.}
+	\showItem{Distância de segurança}{Os drones devem manter uma distância de segurança de, no mínimo, 30 metros de pessoas, veículos, construções e áreas de aglomeração de pessoas.}
+	\showItem{Áreas de voo}{Os drones recreativos não podem ser operados em áreas próximas a aeroportos, helipontos, bases militares, instalações prisionais e outras áreas restritas.}
+	\showItem{Registro}{Os drones recreativos com peso superior a 250 gramas devem ser registrados junto à ANAC.}
+\end{itemize}
+\p{Além disso, é importante que os operadores de drones recreativos cumpram com as boas práticas de segurança de voo, como não voar próximo a áreas com tráfego aéreo intenso, manter a linha de visão direta do drone durante o voo, evitar voos em condições meteorológicas adversas, entre outras.}
+\p{Cabe destacar que a ANAC recomenda que os operadores de drones recreativos contratem um seguro de responsabilidade civil para cobrir possíveis danos causados pelo drone durante a operação. É importante lembrar que, em caso de acidentes, o operador pode ser responsabilizado por eventuais danos causados a pessoas, propriedades ou outros bens.}
+\p{Em resumo, a regulamentação dos drones recreativos no Brasil estabelece uma série de regras e requisitos para garantir a segurança das operações e evitar possíveis riscos e acidentes. É importante que os operadores de drones recreativos conheçam e cumpram essas regulamentações para evitar multas e outras penalidades.}
+\newpage\subsubsection{Drones não Recreativos}
+\p{De acordo com a regulamentação da \gls{ANAC}, os drones utilizados para fins comerciais, são nomeados de \gls{RPA}. Estas aeronaves são regulamentados pela \citeauthor{anac-res-n419-2017} por meio da Resolução nº 419/2017, que estabelece os requisitos e procedimentos para operação de drones em espaço aéreo brasileiro.}
+
+\p{No Brasil, os drones não recreativos, também conhecidos como "drones de uso comercial", são regulamentados pela Agência Nacional de Aviação Civil (ANAC) por meio da Resolução nº 419/2017, que estabelece os requisitos e procedimentos para operação de drones em espaço aéreo brasileiro.}
+\p{Para operar um drone de uso comercial no Brasil, o operador deve seguir alguns requisitos específicos, tais como:}
+\begin{itemize}
+	\showItem{Certificação}{O drone deve possuir um Certificado de Aeronavegabilidade (\gls{CA}) ou um Certificado de Aeronavegabilidade para Aeronaves Recém-Fabricadas (\gls{CAARF}) emitido pela \gls{ANAC}.}
+	\showItem{Habilitação do piloto}{Caso a aeronave sejá classe 2 ou superior e desejá voar acima de 120 metros (400 pés) ou voar em BVLOS. O piloto responsável pela operação do drone deve ser habilitado e possuir o Certificado de Habilitação Técnica (CHT) emitido pela \citeauthor{cht}}
+	\showItem{Peso máximo}{O peso máximo permitido para drones de uso comercial varia de acordo com sua classificação}
+	\showItem{Altitude máxima}{A altitude máxima permitida para voos de drones de uso comercial é de 120 metros (400 pés) acima do nível do solo. Também é possível voar acima desta altura caso a aeronave sejá classe 2 ou superior e o operador tenha \gls{CHT}.}
+	\showItem{Distância de segurança}{Os drones devem manter uma distância de segurança de, no mínimo, 30 metros de pessoas, veículos, construções e áreas de aglomeração de pessoas.}
+	\showItem{Áreas de voo}{Os drones de uso comercial não podem ser operados em áreas próximas a aeroportos, helipontos, bases militares, instalações prisionais e outras áreas restritas. É importante destacar que, para realizar voo em locais aberto, é necessário ter realizado e obtido a aprovação prévia do voo na plataforma \gls{SISANT} (Sistema de Aeronaves não Tripuladas) da \citeauthor{sisant}}
+\end{itemize}
+\p{Além disso, os operadores de drones de uso comercial devem seguir normas específicas para cada tipo de atividade, tais como a obrigatoriedade de realização de vistorias e inspeções periódicas, a utilização de equipamentos de segurança, a contratação de seguros, entre outras.}
+\p{É importante destacar que a regulamentação dos drones de uso comercial no Brasil é bastante rigorosa e visa garantir a segurança das operações, evitando possíveis riscos e acidentes. A ANAC é responsável por fiscalizar o cumprimento dessas regulamentações, e o não cumprimento das normas pode resultar em multas e outras penalidades.}
+
+\subsubsection{Classificação dos RPA}
+\p{A classificação dos RPA no Brasil é realizada pela ANAC durante o processo de homologação da aeronave. O principal critério utilizado para essa classificação é o peso máximo de decolagem (\gls{PMD}) do equipamento, que é dividido em três classes, sendo elas: }
+\insertimage{cobra}{RPA-Classificacao}{Classificação RPA}
+\p{É importante ressaltar que as classes 1 e 2 são consideradas RPAs de grande porte e, por esse motivo, exigem um processo de certificação mais rigoroso. Por outro lado, a classe 3 é considerada de pequeno porte e tem um processo de certificação mais simplificado em comparação às classes maiores.}
+
+\newpage\subsection{USO DE DRONES EM SISTEMAS DE GEOPROCESSAMENTO}
+\p{Os drones têm se tornado uma ferramenta cada vez mais importante em sistemas de geoprocessamento \cite{geoprocessamento-drone}. Isso porque esses equipamentos podem capturar imagens e dados georreferenciados em alta resolução, permitindo a geração de mapas, modelos digitais de terreno, ortofotos e outros produtos cartográficos com grande precisão e rapidez.}
+
+\p{De acordo com \cite{drones-e-ciencia} os drones atualmente são utilizados em diversas aplicações e demandas. Como exemplo por exemplo:}
+
+\begin{itemize}
+	\showItem{Cartografia}{os drones são usados para coletar imagens aéreas de alta resolução, que podem ser usadas para criar mapas precisos e atualizados.}
+	\showItem{Agrícola}{Utilizando drones, é viável efetuar o controle do percevejo e pulverizar inseticidas. Além disso, é possível monitorar a área de cultivo agrícola para identificar eventuais falhas ocorridas durante o plantio ou colheita \cite{drones-agricola}.}
+	\showItem{Controle Ambiental}{os drones são utilizados no monitoramento florestal para coletar dados e compreender a diversidade cultural da área, incluindo informações sobre vegetação, uso do solo, áreas impermeabilizadas, sítios arqueológicos e áreas propensas a deslizamentos de terra. Eles também auxiliam em missões de controle de desastres \cite{drones-e-ciencia}.}
+	\showItem{Engenharia Civil}{A utilização de drones oferece maior rapidez e precisão ao examinar estruturas e detectar danos em edificações. Além de acelerar o processo de análise estrutural de prédios, também permite acesso a locais de difícil alcance \cite{drone-engenharia}}
+	\showItem{Missões de Resgate}{os drones podem ser usados em operações de resgate com a finalidade principal de preservação da vida. Esta tecnologia pode auxiliar nas buscas em locais de difícil ou impossível acesso \cite{resgate-drones}.}
+\end{itemize}
+
+\p{Além disso, a coleta de dados com drones é mais eficiente e segura, uma vez que evita que profissionais precisem acessar áreas de difícil acesso ou de risco, como encostas, barragens, telhados, entre outras.}
+\p{Dessa forma, o uso de drones em sistemas de geoprocessamento pode trazer benefícios em termos de economia de tempo e dinheiro, além de proporcionar uma maior eficiência e segurança nas atividades relacionadas à cartografia e monitoramento de áreas extensas.}
+\newpage\subsection{TECNOLOGIAS E INOVAÇÃO}
+\jumpLine{1}
+\p{\textbf{Navegação Autônoma, Reconhecimento e Desvio de Obstáculos com Drones Multirotores}}
+\p{De acordo com o estudo de \cite{reconhecimento-obstaculos}, é possível implementar um sistema de detecção de obstáculos em drones utilizando um computador embarcado e uma câmera acoplada à parte inferior da aeronave. O autor demonstra a utilização de bibliotecas como OpenCV, juntamente com o algoritmo HT (Hough Transform), para detectar possíveis objetos que possam causar colisões com o drone. Conforme demonstrado em sua pesquisa, a detecção de obstáculos juntamente com o uso de cálculos de rotação permite evitar colisões, tornando possível realizar desvios com a aeronave para evitar colisões.}
+\jumpLine{1}
+\p{\textbf{Análise do Estado da Arte em Segurança Cibernética com Drones}}
+\p{De acordo com o estudo de \cite{seguranca-drones}, a maioria das aeronaves está vulnerável a ataques de hackers, uma vez que cada tipo de comunicação possui suas próprias vulnerabilidades. Como demonstrado pelo autor, aeronaves que utilizam controladores de voo com tecnologia GCS podem ser facilmente hackeadas por meio de ferramentas maliciosas, como o Maldrone. Depois de instalado, o hacker pode ter controle total sobre a aeronave. Portanto, ele destaca a importância da criptografia e segurança nas comunicações entre as aeronaves e a estação de controle no solo ou rádio.}
+\jumpLine{1}
+\p{\textbf{Classificação de Imagens Aéreas Obtidas por Drone Utilizando Técnicas de Inteligência Artificial}}
+\p{De acordo com o estudo de \cite{classificao-imagens-drone}, é possível utilizar técnicas de \textit{Machine Learning}, juntamente com o algoritmo de árvore de decisão (\textit{Random Forest}), para analisar a densidade de vegetação em imagens de solo capturadas por drones. O estudo demonstra que, mesmo com uma base de treinamento pequena, composta por 173 imagens, foi possível obter 86\% de precisão nos dados analisados, o que mostra a viabilidade da tecnologia.}
+
+\newpage\subsection{TENDÊNCIAS E DESAFIOS}
+\p{Nos últimos anos, a demanda por drones tem crescido exponencialmente e muitas empresas estão começando a incluir essas aeronaves em suas frotas de trabalho. No entanto, vale ressaltar que, por se tratar de uma tecnologia relativamente nova, ainda existem muitos desafios a serem superados \cite{tendencias-drones}.}
+\p{Atualmente, empresas de entrega, como a Amazon, já estão utilizando drones para realizar entregas, através do serviço Amazon Prime Air, que oferece entregas rápidas para seus clientes em algumas cidades da Califórnia e do Texas \cite{entregas-drone}. A empresa afirma que existem muitos desafios a serem superados para tornar a operação viável em larga escala. Isso porque é necessário investir em infraestrutura, gerenciamento e novas tecnologias para garantir o bom funcionamento desses equipamentos \cite{prime-air-siemens}.}
+
+\p{Além do uso de drones para entregas, o setor agronômico tem demonstrado grande interesse na sua utilização. Na agricultura 4.0, a principal tendência é o uso de drones para realizar trabalhos precisos e autônomos, como mapeamento de culturas, pulverização e controle de pragas. Esse tipo de equipamento é de grande importância para a realização de trabalhos aéreos, o que pode aumentar a eficiência da produção agrícola. Um dos desafios enfrentados na implantação dessa tecnologia é a padronização tecnológica para garantir a compatibilidade entre os equipamentos, conforme evidenciado no estudo de \cite{agricultura-drones}}
+
+
+\p{Essa alta demanda em diferentes setores tem exigido cada vez mais mão de obra qualificada para operar esses equipamentos, além de evidenciar a falta de infraestrutura adequada para o uso de drones em larga escala.}
+
+\p{É importante ressaltar que no Brasil, os Órgãos Reguladores são rigorosos quanto à segurança no uso de drones. Eles exigem que todos os equipamentos sejam homologados e que garanta segurança durante suas operações de voo, além de impor dezenas de normas e regras para o uso dessas aeronaves em território Brasileiro.}

@@ -1,0 +1,33 @@
+\subsection{SISTEMA DE SEGURANÇA}
+\p{O sistema de segurança é um software escrito em C++, que é responsável por realizar todas os casos de segurança e mitigação de falhas na aeronave.}
+\p{Para o desenvolvimento do sistema de segurança, foi necessario integrar uma Raspberry Pi 4 com o Raspberry Pi OS Lite na aeronave. E instalar as bibliotecas para a Raspberry se comunicar com a Pixhawk.}
+
+\subsubsection{Instalação do OS na Raspberry}
+\p{A instalação do Raspberry Pi OS Lite em uma Raspberry Pi 4, é feita através do Software   Raspberry Pi Image, disponibilizado pela própria fabricante do micro computador.}
+\p{Para realizar a instalação do SO em um cartão de memoria, basta inserir o cartão de memoria no computador com o Software Raspberry Pi Image aberto no computador, pressionar no botão "CHOOSE OS" e entrar na aba "Raspberry Pi OS (other)" e selecionar a opção "Raspberry Pi OS Lite (64-bit)".}
+\p{Depois de selecionar o OS pressione no botão "CHOOSE STORAGE" para selecionar o cartão de memoria, e depois pressione em "WHITE" para gravar o OS no cartão de memoria. É recomendado gravar o OS em um cartão de memoria de 8GB no minimo que seja Classe 10.}
+\p{Aguarde a instalação e apos finalizar basta inserir o cartão de memoria na Raspberry e ligá-la para configurar o OS.}
+
+\newpage\subsubsection{Configurando e instalando dependências de comunicação.}
+\p{Para a Raspberry se conseguir se conectar na Pixhawk deve ser instalado uma biblioteca em python da mavlink, para instala-la foi necessario instalar Python e baixar o repositório da mavlink.}
+\par{Atualizando a Raspberry:}
+\par{\$ sudo apt update}
+\p{\$ sudo apt upgrade}
+\par{Instalando o Python3:}
+\par{\$ sudo apt install python3-pip}
+\par{\$ pip3 install --user future}
+\par{\$ sudo apt install python3-lxml libxml2-utils}
+\p{\$ sudo apt install python3-tk}
+\par{Instalando biblioteca de comunicação:}
+\par{\$ git clone https://github.com/mavlink/c\_uart\_interface\_example.git} 
+\par{\$ https://github.com/mavlink/mavlink.git --recursive} \p{PYTHONPATH=path\_to\_root\_of\_cloned\_mavlink\_repository}
+
+\par{Testando comunicação:}
+\p{\$ mavproxy.py --master=/dev/ttyACM0}
+
+\p{Caso de falha na comunicação, verifique se a Pixhawk esta conectada na interface ttyACM0 da Raspberry, em alguns casos pode acontecer dela ser reconhecida em outras interface.}
+
+\subsubsection{Metodologia do Algoritmo de mitigação.}
+\p{O algoritmo de Mitigação começa criando quatro Threads. A primeira Thread é encarregada de estabelecer a comunicação com a Pixhawk por meio do protocolo Mavlink. Enquanto isso, a segunda Thread coleta informações da aeronave através da porta serial conectada ao Rastreador de Comandos. A terceira Thread é responsável pela conexão com o Planejador de Voo. Por fim, a última Thread executa a lógica dos Casos de Mitigação.}
+\p{Por conta de uma exigência estabelecida pelo órgão regulador, o Sistema de segurança necessita criar um arquivos de relatório de voo, com todas as informações coletadas, para em caso de acidente com a aeronave, sejá possivel ler e analisar os dados da aeronave semelhante a uma caixa preta de um avião convencional.}
+\p{Para isto o sistema de segurança deve gerar três arquivos de relatórios, sendo o primeiro um histórico das informações coletada da Pixhawk, o segundo um relatório de todas as informações recebida pelo Rastreador de Comandos, e o ultimo um relatório de todas as mensagens de Log, Alerta e Error gerado pelas pelo sistema de segurança.}

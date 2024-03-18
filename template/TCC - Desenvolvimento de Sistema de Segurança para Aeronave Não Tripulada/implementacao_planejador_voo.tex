@@ -1,0 +1,41 @@
+\newpage\subsection{PLANEJADOR DE VOO}
+\p{Para o operador acompanhar e visualizar as informações do sistema de segurança, foi necessario fazer uma modificação no Mission Planner, para adicionar um novo painel onde irá possibilitar que o operador visualize a situação da segurança da aeronave.}
+\p{O Mission Planner é uma ferramenta de código aberto, que possibilita qualquer pessoa baixar o código fonte para aprimora-lo ou editá-lo.}
+\subsubsection{Clonar para edição}
+\p{Para editar o planejador de voo deve-se ter instalado o Visual Studio 2022 ou superior e realizar o GIT Clone no repositório: "https://github.com/ArduPilot/MissionPlanner", e abrir o arquivo "MissionPlanner.csproj" presente na pasta raiz do projeto. Sambem é possivel Clonar o Repositório diretamente pelo Visual Studio, através do menu "Arquivos", grupo "Novo" e opção "Repositório...".}
+\subsubsection{Mudanças na Interface}
+\p{Para repaginar a interface do software e deixá-lo com uma aparência mais agradável, foi se utilizando o framework chamado Guna.UI2.WinForms, que pode ser adicionado ao projeto através do Gerenciado de Pacotes do Nuget.}
+\p{Esta interface foi projeta e idealizada de tal forma, onde todos os componentes importante ficasse visível na tela. Alem da nova disposição das coisas, foi separado a câmera do HUD.}
+\insertimagesize{me}{missionPlanner/fullView}{Nova interface do Mission Planner}{420px}
+\newpage\subsubsection{Painel do Sistema de Segurança}
+\p{Visando completar as informações presente no painel principal do planejador de voo. Foi necessario realizar a integração das informações do sistema de segurança em um novo Painel.}
+\insertimagesize{me}{missionPlanner/sensors}{Painel do Sistema de Segurança presente no Mission Planner}{350px}
+\p{Este painel oferece uma visão geral de todos os sensores presente na aeronave, como: Nivel de Bateria e Combustivel, Rotação dos motores elétricos e a combustão, Alem de informações de sinal e temperatura. Estas informações permite o operador acompanhar com detalhes como esta o desempenho e voo da aeronave.}
+
+\p{Para habilitar as funcionalidade do painel do sistema de segurança, é necessario realizar a conexão com a aeronave. Para se conectar com a aeronave basta conectar o computador do operador na antena de Telemetria, através de um repetidor sem fio ou cabo, e inserir o \refcode{IP e Porta} da  aeronave na \refcode{Caixa de Texto} presente no canto superior direito do painel, apos inserir o \refcode{IP e Porta} basta pressionar no botão Conectar.}
+\p{O botão ficara amarelo enquanto se conecta a aeronave, se a conexão for bem sucedida, o botão devera ficar verde, sinalizando que esta conectado. Para garantir a conexão, quando o sistema perde o sinal com a aeronave, o sistema ficara tentando reconectar até pressionar novamente no botão. Por a aeronave voar em distancias muito longa, pode acontecer da aeronave sobrevoar um ponto sego da telemetria e perder o sinal com o Computador no solo.}
+
+\newpage\subsubsection{Painel de Parâmetros}
+\p{O painel de parâmetros é um painel dedicado a listar todos os dados recebidos pelo sistema de segurança pela conexão Socket, nele o operador pode observar todos os valores detalhadamente.}
+\insertimagesize{me}{missionPlanner/status}{Painel de Parâmetros}{300px}
+
+\subsubsection{Painel de Alertas}
+\p{No painel de alertas é feita uma listagem de todas as mensagem de Aviso recebidos do sistema de segurança. Os alertas são recebidos juntos a os parâmetros na conexão Socket.}
+\p{Os alertas foram definidos em três categorias, sendo \refcode{LOG} um aviso feito pelo Sistema de Segurança, \refcode{WAR} sendo uma previsão de falha em um dos teste de Mitigação, e \refcode{ERROR} como o aviso critico enviado pelo sistema de segurança, quando um dos casos de mitigação aciona a bandeira vermelha ou amarela.}
+\insertimagesize{me}{missionPlanner/alerts}{Painel de Alertas}{300px}
+\p{Ao receber um alerta do tipo \refcode{WAR}, imediatamente será aberto uma grande mensagem de erro na tela para alertar o operador sobre a situação da aeronave. Esta telá é importante para a visualização do alerta independente da tela que operador esteja visualizando no planejador de voo.}
+\insertimagesize{me}{missionPlanner/screenAlerts}{Janela de Falha Critica}{470px}
+
+\subsubsection{Metodologia de Conexão}
+\p{Para o planejador de voo se conectar com o sistema de segurança, foi necessário implementar uma conexão Socket entre ambos sistemas. Esta conexão irá permitir que o Planejador de Voo receba todos os dados presentes no sistema de segurança. Para alertar o operador em caso de Falha e para alimentar as informações presente no Painel de Segurança do Sistema.}
+
+\p{Para implementação da conexão Socket foi necessario adicionar a o Form principal do projetor um Timer desligado com o Tick de 1 segundo para realizar a leitura da conexão Socket. E também uma TextBox junto a um Button para o operador inserir o IP e Porta da aeronave para se conectar.}
+
+\newpage
+\insertimagesize{me}{missionPlanner/script_timer}{Script do Timer}{400px}
+
+\p{A cada segundo o sistema de segurança envia ao planejador de voo um texto com vários parâmetros de uma só vez. As informações são separadas por \refcode{;} e cada informação carrega o \refcode{id} e o \refcode{valor} de um parâmetro sendo separados por um \refcode{=}, tendo um padrão para toda mensagem de \refcode{id=valor;}.}
+\p{Exemplo: \refcode{TEMP\_BAT1=57;TEMP\_BAT2=45;COMB=75;VCC\_5V=5.2;RPM\_M1=3482;}}
+\p{Alem dos parâmetros da aeronave o sistema de segurança, envia separadamente as mensagens de log para o planejador de voo, a metodologia usada é a mesma dos parâmetros. Sendo que o \refcode{id} das mensagens de alertas são: \refcode{ALERT\_LOG} para avisos sem grau de importância, \refcode{ALERT\_WAR} para notificar que algum dos caso de mitigação pode ter detectado uma falha e \refcode{ALERT\_ERROR} para avisar o operador que foi acionado Bandeira Amarela ou Bandeira Vermelha no sistema de segurança.}
+
+

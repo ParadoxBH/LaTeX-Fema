@@ -1,0 +1,37 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+%inclusão do arquivo de formatação e funções
+\input{formatting}
+
+\orientando{Guilherme Leme Garcia}
+\orientador{Prof. Me. Guilherme de Cleva Farto}
+\titulo{Desenvolvimento de Sistema de Segurança para Aeronave Não Tripulada Remotamente Controlada}
+\examinador{Dr. Luiz Ricardo Begosso}
+
+\begin{document}
+
+\showcapa
+\iffalse
+\showresumo{texto}{Drone, Sistema de Segurança, Homologação}
+\showabstract{texto}{Drone, Sistema de Segurança, Homologação}
+\fi
+
+%Sumario
+\newpage\tableofcontents
+
+%Sumario de Imagens
+\newpage\listoffigures
+
+%Sumario de Siglas
+\printpageglossary
+
+\input{introducao}
+\input{revisao}
+\input{proposta}
+\input{metodologia}
+\input{implementacao}
+\input{conclusao}
+\printreferences
+\end{document}

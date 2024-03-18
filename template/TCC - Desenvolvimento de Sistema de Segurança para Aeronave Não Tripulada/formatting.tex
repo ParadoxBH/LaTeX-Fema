@@ -1,0 +1,306 @@
+
+%permite pegar a data da build
+\usepackage{datetime}
+
+% torna a fonte arial e justificada
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[T1]{fontenc}
+
+%insere 1,15 de distancia entre paragrafos
+\usepackage{setspace}
+\setstretch{1.15}
+
+%remove o recuo de paragrafo
+\setlength{\parindent}{0pt}
+
+% função utilizada para criar recuo em paragrafo
+\usepackage{changepage}
+
+% função subtrair
+\def\subtraiNumeros#1#2{%
+	\number\numexpr#1-#2\relax%
+}
+
+
+% biblioteca de glossario
+\usepackage[nonumberlist, acronym, toc]{glossaries}
+\usepackage{glossaries-extra}
+\renewcommand*{\glossarysection}[2][]{}
+\makenoidxglossaries
+\input{glossaries}
+\def\printpageglossary{
+	\newpage\section*{\protect\centering{GLOSSÁRIO}}
+	\printnoidxglossary[title={GLOSSÁRIO},nonumberlist]
+}
+
+
+% permite inserir imagens no documento
+\usepackage{graphicx}
+
+% permite inserir imagens no documento
+\usepackage{tocloft}
+
+% biblioteca de referencias de imagem
+\usepackage{tocloft}
+
+% biblioteca pra usar \ifstrequal
+\usepackage{etoolbox}
+
+% colocando borda nas imagens
+\fboxsep=2pt %distancia da borda das imagens
+\fboxrule=2pt %largura da borda das imagens
+\usepackage{xcolor}% importa o pacote de cores
+\def\colorBorder{black!10} %cor da borda das imagens
+\def\colorPadding{white} %cor do fundo das imagens
+
+\usepackage{microtype} % melhora a disposição do texto nas linhas
+\usepackage{enumitem} % para usar a biblioteca de inumeração de capitulo
+
+% bibliotecas do glossario
+\usepackage{hyperref} % cria ancora em todos as referencias
+\usepackage{glossaries}
+
+
+
+%============================================================================
+%funções de norma IMESA
+%============================================================================
+
+%citação exibir somente sobrenome e ano
+
+
+% Definir um novo estilo enumerate com o texto "Capítulo" antes da numeração
+\newlist{myenum}{enumerate}{1}
+\setlist[myenum]{label=\textbf{Capítulo \arabic*,},leftmargin=*}
+\newenvironment{chapterItem}[1]
+{\chapter{#1}
+	\begin{myenum}}
+	{\end{myenum}}
+
+% sinalizar caixa de aviso do orientador
+\def\aviso#1{
+	\p{\colorbox{red!25}{\parbox{\linewidth}{
+				\textbf{#1}}}}
+}
+
+%alterando as margem da pagina
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=2cm]{geometry}
+
+%função para pular linha
+\def\jumpLine#1{
+	\vspace{12pt}
+	\ifnum#1>1
+	\jumpLine{\subtraiNumeros{#1}{1}}
+	\fi
+}
+
+% formatando sumario de imagens
+\renewcommand{\listfigurename}{\begin{center}LISTA DE ILUSTRAÇÕES\end{center}}% altera o titulo da lista de figuras de List of figures para LISTA DE ILUSTRAÇÕES
+\renewcommand{\cftfigpresnum}{\textbf{Figura\ }}%insere o texto Imagem antes do numero e torna negrito o texto
+\renewcommand{\cftfigaftersnum}{:}%insere : apos o numero da imagem
+\setlength{\cftfignumwidth}{2.2cm}%adiciona uma espaço antes do nome da imagem para caber a numeração + texto na esquerda do titulo
+
+% remove o texto Reference no comando \bibliography
+\renewcommand{\refname}{\vspace{-1.5cm}} 
+
+% realiza a formatação da pagina de Sumario
+\renewcommand{\contentsname}{\begin{center}SUMÁRIO\end{center}}
+\usepackage{tocloft}
+\usepackage{titlesec}
+\renewcommand{\cftdotsep}{1} % Define a separação entre os pontos
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} % Preenchimento de pontos até a página
+\def\spacesumario{3em}%Define o espaço igualmente este os itens presente no sumario
+
+\setlength{\cftbeforesecskip}{0pt}% Remove o espaço entre seções
+\cftsetindents{section}{0pt}{\spacesumario}% Define o espaço a esquerda das seções
+\renewcommand{\cftsecfont}{\fontsize{13pt}{13pt}\bfseries} % Formata o texto da seções
+
+\cftsetindents{subsection}{0pt}{\spacesumario}% Define o espaço a esquerda das subseções
+\renewcommand{\cftsubsecfont}{\fontsize{12pt}{12pt}\normalfont} % Formata o texto da subseções
+
+\cftsetindents{subsubsection}{0pt}{\spacesumario}% Define o espaço a esquerda do item das subseções
+\renewcommand{\cftsubsubsecfont}{\fontsize{11pt}{11pt}\bfseries} % Formata o texto do item da subseção
+
+
+%função para inserir uma citação direta
+\def\citacaoDireta#1#2{
+	\par Segundo \citeonline{#1}:\textoDireta{3.5cm}{#2}
+}
+
+%função para inserir texto deslocado a direita
+\def\textoDireta#1#2{
+	\jumpLine{2}\begin{adjustwidth}{#1}{0cm} #2\end{adjustwidth}\jumpLine{2}
+}
+
+%referencia um script no artigo, deixa o texto dentro de uma caixa cinza clara
+\definecolor{ligthgray}{RGB}{225,225,225}
+\def\refcode#1{
+\colorbox{ligthgray}{#1}
+}
+
+%função paragrafo
+\def\p#1{\par #1 \vspace{10pt}\par}
+
+%função formatação de item
+\def\showItem#1#2{\item\textbf{#1: }#2}
+
+%altera a forma que é exibido a legenda das imagem
+\usepackage{subcaption}
+\DeclareCaptionFormat{custom}% cria uma formatação customizada para as legendas, tornando maiusculo o texto Figure X:
+{%
+	\textbf{#1#2}#3
+}
+\captionsetup{format=custom}% aplica a formatação customizada criada acima
+\captionsetup[figure]{name=Figura}% altera da legenda das imagem de Figure X: para Figura X:
+
+%função verifica se o author citado é voce ou alguma referencia % use {me} nas referencia para citar si mesmo
+\def\showauthor#1{
+	\ifstrequal{#1}{me}
+	{O Autor}
+	{\citeonline{#1}}
+}
+
+%função inserir imagem no artigo % \citeimage{author}{.png}{descricao}
+\usepackage{caption}
+\def\insertimage#1#2#3{
+	\begin{figure}[htbp]
+		\centering
+		\fcolorbox{\colorBorder}{\colorPadding}{}
+		\caption{#3}
+		\textbf{Fonte: }\showauthor{#1}
+		\label{fig:#2}
+	\end{figure}
+}
+%função inserir imagem no artigo % \citeimage{author}{.png}{descricao}{tamanho}
+\usepackage{caption}
+\def\insertimagesize#1#2#3#4{
+\begin{figure}[htbp]
+	\centering
+	\fcolorbox{\colorBorder}{\colorPadding}{}
+	\caption{#3}
+	\textbf{Fonte: }\showauthor{#1}
+	\label{fig:#2}
+\end{figure}
+}
+
+%função: citar imagem inserida no artigo
+\def\citimage#1{
+	\ref{fig:#1}
+}
+
+
+% cria uma linha dedicada a assinatura \signature{função}{nome}
+\def\signature#1#2{
+	\jumpLine{1}
+	\begin{tabular}{p{3cm}@{}p{12cm}}
+		\textbf{#1 :} & \hrulefill \\
+		&\centering{#2} \\
+	\end{tabular}
+}
+
+%cria função para gerar pagina de referencias 
+\usepackage[alf,abnt-emphasize=bf]{abntex2cite}
+
+\def\printreferences{
+\newpage\section*{REFERÊNCIAS} \addcontentsline{toc}{section}{REFERÊNCIAS}
+\bibliography{referencias.bib}
+}
+\usepackage{babel}
+
+
+%formata o glossario do documento
+\addto\captionsportuguese{
+	\renewcommand{\glossaryname}{\centering{GLOSSÁRIO}}
+}
+
+%============================================================================
+% paginas
+%============================================================================
+
+\usepackage{afterpage} % permite criar paginaspersonalizadas
+
+% criando variaveis de ambiente da capa
+\newcommand{\orientando}[1]{\renewcommand{\orientando}{#1}}
+\newcommand{\titulo}[1]{\renewcommand{\titulo}{#1}}
+\newcommand{\orientador}[1]{\renewcommand{\orientador}{#1}}
+\newcommand{\examinador}[1]{\renewcommand{\examinador}{#1}}
+
+	
+% desenhando capa
+\usepackage{titling}
+\newcommand{\showcapa}{
+	\begin{titlepage}
+		\centering
+		\includegraphics[keepaspectratio]{Imagens/fema}
+		\jumpLine{7}
+		\textbf{\orientando}
+		\vfill
+		\textbf{\titulo}
+		\vfill
+		\textbf{Assis/SP\\\the\year}
+	\end{titlepage}
+	\newpage\paginaApresentacao
+	\newpage\paginaComissaoExaminadora
+}
+
+% desenhando apresentacao
+\def\paginaApresentacao{
+	\begin{titlepage}
+		\centering
+		\includegraphics[keepaspectratio]{Imagens/fema}
+		\jumpLine{7}
+		\textbf{\orientando}
+		\vfill
+		\textbf{\titulo}
+		
+		\textoDireta{8cm}{\jumpLine{2}\footnotesize{
+			\p{Trabalho de Conclusão de Curso apresentado ao curso de Ciência da Computação do Instituto Municipal de Ensino Superior de Assis – IMESA e a Fundação Educacional do Município de Assis – FEMA, como requisito parcial à obtenção do Certificado de Conclusão.}
+			\p{\textbf{Orientando(a):} \orientando
+			\\\textbf{Orientador(a):} \orientador}
+			}
+		}
+		\vfill
+		\textbf{Assis/SP\\\the\year}
+	\end{titlepage}
+}
+
+% desenhando pagina com assinatura da banca
+\def\paginaComissaoExaminadora{
+	\begin{titlepage}
+		\centering
+		\includegraphics[keepaspectratio]{Imagens/fema}
+		\jumpLine{7}
+		\textbf{\orientando}
+		\vfill
+		\textbf{\titulo}
+		
+		\textoDireta{8cm}{\jumpLine{2}\footnotesize{
+				\p{Trabalho de Conclusão de Curso apresentado ao Instituto Municipal de Ensino Superior de Assis, como requisito do Curso de Graduação, avaliado pela seguinte comissão examinadora:}
+			}
+		}
+		\vfill
+		\signature{Orientador}{\orientador}
+		\signature{Examinador}{\examinador}
+		\vfill
+		\textbf{Assis/SP\\\the\year}
+	\end{titlepage}
+}
+
+%pagina de resumo e abstract
+\def\showresumo#1#2{
+	\showpageabstract{Resumo}{#1}{Palavras-chave}{#2}
+}
+\def\showabstract#1#2{
+	\showpageabstract{Abstract}{#1}{Keywords}{#2}
+}
+
+\def\showpageabstract#1#2#3#4{
+\begin{titlepage}\centering{\large\textbf{#1}}
+	\jumpLine{1}
+	\p{#2}
+	\jumpLine{2}
+	\p{\textbf{#3:} #4}
+\end{titlepage}
+}
+

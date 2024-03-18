@@ -1,0 +1,54 @@
+\newpage\section{INTRODUÇÃO}
+\p{A utilização de Veículos Aéreos Não Tripulados (VANTs) vem aumentando nos últimos anos de maneira exponencial, seja ela na área comercial, industrial, agronômica ou até mesmo em atividades militares.}
+\citacaoDireta{Oliveira}{A taxa de crescimento anual global do mercado de drones é estimada em 14\% entre 2020 e 2025, perfazendo de uma receita de US\$ 22 bilhões e chegando a US\$43 bilhões. Prevê-se que, no período de cinco anos, o segmento irá dobrar de tamanho. Salienta-se que o drone agrícola está na lista de itens tecnológicos mais almejados pelos adeptos da agricultura de precisão. Dentre os usos a agricultura, 59\% referem-se aos serviços de mapeamento de campo.}
+\p{No Brasil quando uma empresa deseja desenvolver sua própria aeronave ou importar uma, é necessário fazer uma regularização no Brasil. Os órgãos reguladores solicitam uma homologação, onde é feita uma vistoria que irá assegurar se o VANTs é uma aeronave segura para voo \cite{vistoria-drones}. Um dos principais pontos avaliados nesta vistoria é o sistema de segurança presente na aeronave.}
+\p{Neste cenário, pretende-se realizar o levantamento de requisitos de segurança para um VANTs de aplicação geral. Deseja-se elicitar os requisitos de acordo como as normas solicitadas pelos órgãos reguladores. Para que seja desenvolvido um sistema de segurança adequado para que uma aeronave seja homologada no Brasil.}
+
+\newpage\subsection{OBJETIVOS}
+
+\subsubsection{Objetivo Geral}
+\p{Elicitar os requisitos solicitados pelos órgãos reguladores e desenvolver um sistema de segurança para VANTs, em conformidade com as normas de segurança, para se garantir o bom funcionamento da aeronave durante a realização de seus trabalho em campo.}
+
+\subsubsection{Objetivos Específicos}
+\begin{itemize}
+	\item Realizar uma pesquisa e listar detalhadamente as normas e requisitos exigidos pelos órgãos reguladores.
+	\item Desenvolver um sistema de segurança embarcado que seja capaz de identificar possíveis falhas durante as operações de voo realizada pela aeronave, reduzindo e mitigando riscos de acidentes.
+	\item Desenvolver uma modificação no software de planejamento de voo com o fim de exibir os dados coletados em tempo real ao operador da aeronave.
+	\item Para permitir uma análise detalhada da situação da aeronave durante as operações, é necessário desenvolver um visualizador de log para o sistema de segurança.
+\end{itemize}
+
+\subsection{JUSTIFICATIVAS}
+\p{A justificativa para a realização deste trabalho vem da crescente popularidade dos drones, que estão cada vez mais presentes em nosso cotidiano como é demonstrado pelos dados apresentados pela \cite{quantidade-cadastros}.}
+\p{De acordo com o presente cenário Brasileiro, os usuários que desejam usar aeronaves importadas ou desenvolvidas em território nacional, devem realizar um procedimento de homologação diretamente pela \gls{ANATEL} (item 8.4.5 do Anexo à Resolução nº 323, de 07 de novembro de 2002) onde é feito uma vistoria de segurança, visando garantir que a aeronave seja segura para operar em território Brasileiro.}
+\p{Portanto o desenvolvimento de um sistema de segurança para drones capaz de detectar possíveis falhas mecânicas e eletrônicas na aeronave é essencial para mitigar os riscos e aumentar a confiabilidade desses equipamentos.}
+\p{O presente trabalho é justificado pela necessidade de desenvolver soluções tecnológicas inovadoras e acessíveis para a segurança destes equipamentos, com o objetivo de promover a expansão segura e sustentável do uso dessas aeronaves.}
+
+\newpage\subsection{MOTIVAÇÃO}
+\p{A motivação principal deste trabalho surgiu do fato que grande parte dos sistemas de segurança para aeronaves não tripulada, são de empresas proprietária, que não compartilham com a comunidade suas descobertas e implementação.}
+\p{Além disso, a instalação desses sistemas requer customizações e modificações específicas para cada tipo de aeronave, o que dificulta a aplicação generalizada de soluções de segurança.}
+\p{Nesse contexto, este trabalho busca contribuir com o tema no desenvolvimento de um sistema que visa detectar possíveis falhas mecânicas e eletrônicas na aeronave, para que seja possível realizar uma aterrissagem de segurança ou alguma ação de emergência visando evitar qualquer tipo de acidente.}
+
+\subsection{PERSPECTIVAS DE CONTRIBUIÇÃO}
+Espera-se que o presente trabalho possa contribuir com o entendimento do atual cenário de homologação de VANTs no Brasil, destacando os principais requisitos de segurança envolvidos no desenvolvimento de aeronaves não tripuladas. Espera-se que os resultados apresentados possam servir como base para o aprimoramento das práticas de segurança na operação de VANTs, visando garantir a segurança das operações aéreas e evitar potenciais riscos.
+
+\newpage\subsection{METODOLOGIA DE PESQUISA}
+A metodologia empregada para o presente trabalho consistirá das seguintes etapas: 
+\begin{enumerate}
+	\showItem{Levantamento de Homologação}{Realização de um estudo exploratório dos principais requisitos e normas exigidos pelos órgãos reguladores.}
+	\showItem{Levantamento de Tecnologia}{Pesquisa e levantamento dos principais controladores de vôo utilizados nas aeronaves.}
+	\showItem{Implantação de Central de Segurança}{Escolha e instalação de um computador de bordo responsável em capturar os dados da aeronave durante as operações de voo.}
+	\showItem{Desenvolvimento de Sistema Embarcado}{Nesta etapa será realizado o desenvolvimento de um software, com o objetivo de monitorar a aeronave.}
+	\showItem{Desenvolvimento de Sistema de Solo}{Será necessário desenvolver um sistema de monitoramento para que o operador visualize e acompanhe o trabalho que esta sendo realizado na aeronave.}
+	\showItem{Realização de Testes}{Na fase final do projeto, o equipamento completo será implantado e submetido a testes rigorosos em uma aeronave de teste virtual ou real. Esses testes são cruciais para validar a eficácia da implementação de segurança, garantindo que o sistema esteja pronto para ser utilizado em ambiente real.}
+\end{enumerate}
+
+\newpage\subsection{ESTRUTURA DO TRABALHO}
+A estrutura empregada para o presente trabalho consistirá das seguintes etapas:
+\begin{itemize}
+	\showItem{Capítulo 1 - Introdução}{Neste capítulo, serão apresentados os objetivos, justificativas, motivação, perspectivas de contribuição e metodologia de pesquisa utilizada no desenvolvimento deste trabalho. Além disso, serão explicados os tipos de aeronaves, suas respectivas aplicações e os órgãos reguladores responsáveis. Será apresentado onde essas aeronaves são utilizadas, destacando as principais áreas de atuação.}
+	\showItem{Capítulo 2 - Normas de Homologação}{Este capítulo apresenta as normas e obrigações exigidas pelos órgãos reguladores para a homologação do projeto, além de explicar e listar os principais requisitos para o desenvolvimento do projeto. Serão detalhadas as normas e exigências que devem ser seguidas para a homologação, bem como os procedimentos necessários para cumprir essas exigências.}
+	\showItem{Capítulo 3 - Proposta do Trabalho}{Neste capítulo, realizaremos uma listagem das principais tecnologias presente atualmente no mercado. Serão apresentando as opções de hardware e software que serão utilizados na implantação e no desenvolvimento do sistema de segurança.}
+	\showItem{Capítulo 4 - Metodologia}{Neste capítulo, realizaremos a definição do projeto, abordando detalhes da metodologia que será utilizada. Alem de realizarmos uma visão geral do funcionamento e da forma de operar as aeronaves não tripuladas.}
+	\showItem{Capítulo 5 - Desenvolvimento}{Este capítulo aborda o desenvolvimento das ferramentas de segurança. Nele, serão descritas as metodologias e as bibliotecas utilizadas no desenvolvimento do sistema de segurança, bem como o processo de desenvolvimento em si. Além disso, serão apresentadas e explicadas as ferramentas desenvolvidas, demonstrando seu funcionamento e utilidade.}
+	\showItem{Capítulo 6 - Conclusões e Trabalhos Futuros}{Este capítulo apresenta a conclusão do projeto e um resumo geral de todo o processo de desenvolvimento abordado. Serão apresentados os resultados obtidos a partir da implantação do sistema de segurança na aeronave, destacando as suas vantagens e desvantagens. Além disso, serão discutidas as principais conclusões e lições aprendidas ao longo do projeto.}
+\end{itemize}
